@@ -13,11 +13,11 @@ func BenchmarkUDT_SupportedArrayMap_NewDesign(b *testing.B) {
 		ID:            31,
 		Name:          "TEST_MAN",
 		NormalAddress: udt_test_address{Address: "NORMAL_ADDRESS", Number: 9022345, TEST: true},
-		Address:       UDTList{udt_test_address{Address: "MY_HOME_Z_MY_HOME", Number: 1, TEST: true}, udt_test_address{Address: "MY_HOME_Y_MY_HOME", Number: 2, TEST: true}, udt_test_address{Address: "MY_HOME_X_MY_HOME", Number: 3, TEST: false}},
-		MapAddress:    UDTMap{"MYFIRSTHOME": udt_test_address{Address: "MY_XASD_HOME_Z_MY_HOME", Number: 2000, TEST: true}, "MYSECONDHOME": udt_test_address{Address: "MY_SADS_HOME_Y_MY_HOME", Number: 10000, TEST: false}},
+		Address:       []udt_test_address{udt_test_address{Address: "MY_HOME_Z_MY_HOME", Number: 1, TEST: true}, udt_test_address{Address: "MY_HOME_Y_MY_HOME", Number: 2, TEST: true}, udt_test_address{Address: "MY_HOME_X_MY_HOME", Number: 3, TEST: false}},
+		//MapAddress:    map[string]udt_test_address{"MYFIRSTHOME": udt_test_address{Address: "MY_XASD_HOME_Z_MY_HOME", Number: 2000, TEST: true}, "MYSECONDHOME": udt_test_address{Address: "MY_SADS_HOME_Y_MY_HOME", Number: 10000, TEST: false}},
 	}
 
-	names := []string{"id", "name", "address" /*, "array_address"*/, "map_address" /*, "map_array_address", "n_address"*/}
+	names := []string{"id", "name", "address", "Array", "Array2", "Array3", "Array4" /*, "array_address", "map_address" , "map_array_address", "n_address"*/}
 	args, err := Query(nil, names).bindStructArgs(firstPeople, nil)
 	if err != nil {
 		b.Fatal(err)
@@ -35,11 +35,11 @@ func BenchmarkUDT_UnsupportedArrayMap_NewDesign(b *testing.B) {
 		ID:            31,
 		Name:          "TEST_MAN",
 		NormalAddress: udt_test_address{Address: "NORMAL_ADDRESS", Number: 9022345, TEST: true},
-		Address:       UDTList{udt_test_address{Address: "MY_HOME_Z_MY_HOME", Number: 1, TEST: true}, udt_test_address{Address: "MY_HOME_Y_MY_HOME", Number: 2, TEST: true}, udt_test_address{Address: "MY_HOME_X_MY_HOME", Number: 3, TEST: false}},
-		MapAddress:    UDTMap{"MYFIRSTHOME": udt_test_address{Address: "MY_XASD_HOME_Z_MY_HOME", Number: 2000, TEST: true}, "MYSECONDHOME": udt_test_address{Address: "MY_SADS_HOME_Y_MY_HOME", Number: 10000, TEST: false}},
+		Address:       []udt_test_address{udt_test_address{Address: "MY_HOME_Z_MY_HOME", Number: 1, TEST: true}, udt_test_address{Address: "MY_HOME_Y_MY_HOME", Number: 2, TEST: true}, udt_test_address{Address: "MY_HOME_X_MY_HOME", Number: 3, TEST: false}},
+		//MapAddress:    map[string]udt_test_address{"MYFIRSTHOME": udt_test_address{Address: "MY_XASD_HOME_Z_MY_HOME", Number: 2000, TEST: true}, "MYSECONDHOME": udt_test_address{Address: "MY_SADS_HOME_Y_MY_HOME", Number: 10000, TEST: false}},
 	}
 
-	names := []string{"id", "name", "address" /*, "array_address"*/, "map_address" /*, "map_array_address", "n_address"*/}
+	names := []string{"id", "name", "address", "Array", "Array2", "Array3", "Array4" /*, "array_address", "map_address" , "map_array_address", "n_address"*/}
 	args, err := Query(nil, names).bindStructArgs(firstPeople, nil)
 	if err != nil {
 		b.Fatal(err)
